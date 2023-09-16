@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,7 +50,7 @@ INSTALLED_APPS = [
     # 'corsheaders',
     'django_filters',
     'rest_framework.authtoken',
-    # 'social_django',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -91,14 +93,21 @@ WSGI_APPLICATION = 'shop7.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "shop7",
-        'USER': 'root',
-        'PASSWORD': "123",
-        'HOST': "localhost",
-        'PORT':3306,
-        "OPTIONS":{"init_command":"SET default_storage_engine=INNODB;"}
+        'NAME': os.environ.get("MYSQL_NAME"),
+        'USER': os.environ.get("MYSQL_USER"),
+        'PASSWORD': os.environ.get("MYSQL_PASSWORD"),
+        'HOST': os.environ.get("MYSQL_HOST"),
+        'PORT': os.environ.get("MYSQL_PORT"),
+        "OPTIONS":{"init_command":"SET default_storage_engine=INNODB;SET sql_mode='STRICT_TRANS_TABLES'"}
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -194,7 +203,7 @@ appid = "2016101400687743"
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-)
+) # when offline
 #缓存的有效时间
 REST_FRAMEWORK_EXTENSIONS = {
     'DEFAULT_CACHE_RESPONSE_TIMEOUT': 60 * 15
@@ -225,4 +234,4 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/index/'
 #     integrations=[DjangoIntegration()]
 # )
 
-# STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+# STATIC_ROOT = os.path.join(BASE_DIR, "static/") # when online
