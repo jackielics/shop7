@@ -1,7 +1,7 @@
 
 def get_auth_url():
     weibo_auth_url="https://api.weibo.com/oauth2/authorize"
-    redirect_url="http://47.115.208.57:7000/complete/weibo/"
+    redirect_url="http://127.0.0.1:7000/complete/weibo/"
     auth_url=weibo_auth_url+"?client_id={client_id}&redirect_uri={re_url}".format(client_id=2681036351,re_url=redirect_url)
 
 

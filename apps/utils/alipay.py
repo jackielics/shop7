@@ -129,7 +129,7 @@ class AliPay(object):
 #拿到支付宝返回给我们的url，进行解析，为了防止黑客截获，
 
 if __name__ == "__main__":
-    IP="47.115.208.57:7000"#你要改，改为你的公网IP和监听端口
+    IP="127.0.0.1:7000"#你要改，改为你的公网IP和监听端口
     return_url = 'http://42.192.117.114/alipay/return/?charset=utf-8&out_trade_no=20210907163741149&method=alipay.trade.page.pay.return&total_amount=100.00&sign=tIb5MV14RbohJS5D5jnZWgSRTD2F1HU0i51fA%2BiH5tgLRaMP%2Fr%2B6Ns%2FYISJBKFkpjQzPvtBvR%2BQM%2BpWCjUXjhvAaANzA%2BXfEzp6gU94WU7Rzg3HTB8cbHw1qD58TmFHISkfdwmTQGtLpcM1umAm0bt%2FAVbR6s9YqS6wgntLyZFOS1dQIR952YvW4AKz%2B8Zp7dxdd9ZKn4V4SRkW3ogWSfuKs04pqKFIxbMSXwxHtfUoNTp5pXztFqBJrG1CIATy6IoaJ7RvJNZ0ASyU6NAIQqc3L0k24alDEwYzOujTqiIlVHx3A5mv%2FiGJHe6e8srrDormmfDefo2I6UCvgVJv8nw%3D%3D&trade_no=2021090722001490421000205277&auth_app_id=2016101400687743&version=1.0&app_id=2016101400687743&sign_type=RSA2&seller_id=2088102179599265&timestamp=2021-09-07+15%3A28%3A50'
     o = urlparse(return_url)
     query = parse_qs(o.query)
